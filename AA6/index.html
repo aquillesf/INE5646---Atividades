@@ -141,7 +141,10 @@
     <p id="saidaMap">Resultado do map aqui!</p>
 
     <script>
-        //adicione aqui o script para resolução do Exercício 10
+        let lista = [1,2,3,4,5,6,7,8,9,10];
+        let lista_quadrado = lista.map(n => n ** 2);
+        const elemento_lista_quad = document.getElementById("saidaMap");
+        elemento_lista_quad.textContent = lista_quadrado;
     </script>
 
     <h3>Exercício 11</h3>
@@ -155,7 +158,10 @@
 
 
     <script>
-        //adicione aqui o script para resolução do Exercício 11
+        const lista_n = [1,2,3,4,5,6,7,8,9,10];
+        const lista_pares = lista_n.filter(n => n % 2 === 0);
+        const elemento_lista_par = document.getElementById("saidaFilter");
+        elemento_lista_par.textContent = lista_pares;
     </script>
 
     <h3>Exercício 12</h3>
@@ -169,7 +175,10 @@
     <p id="saidaReduce">Resultado do reduce aqui!</p>
 
     <script>
-        //adicione aqui o script para resolução do Exercício 12 
+        const lista_soma = [1,2,3,4,5,6,7,8,9,10] ;
+        const lista_soma_total = lista_soma.reduce((soma, n) => soma + n, 0);
+        const elemento_reduce = document.getElementById("saidaReduce");
+        elemento_reduce.textContent = lista_soma_total;
     </script>
 
 </body>
