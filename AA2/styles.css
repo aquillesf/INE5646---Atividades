@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F7F7F7;
+    color: #3338A0;
+    margin: 0;
+    padding: 20px;
+}
+
+.cabecalho {
+    background-color: #3338A0;
+    color: #F7F7F7;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.caixa {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.caixa-amarela {
+    background-color: #FCC61D;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.termo {
+    font-weight: bold;
+    color: #3338A0;
+}
+
+.link-legal {
+    color: #C59560;
+    text-decoration: none;
+}
+
+.link-legal:hover {
+    text-decoration: underline;
+}
+
+.link-botao {
+    background-color: #C59560;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    margin-right: 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
