@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Mensagens TCP/UDP</title>
+    <link rel="stylesheet" href="ws.css">
+    <script href="ws_partial.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Monitor de Mensagens TCP/UDP</h1>
+    </header>
+
+    <div class="container">
+
+        <!-- Status do servidor -->
+        <div class="server-status">
+            <div class="status-indicator">
+                <span class="status-dot status-offline"></span>
+                <span>Servidor offline</span>
+            </div>
+
+            <div class="server-controls">
+                <button>Iniciar Servidor</button>
+                <button>Parar Servidor</button>
+                <button id="clearMessages">Limpar Mensagens</button>
+            </div>
+        </div>
+
+        <!-- Estatísticas -->
+        <div class="connection-stats">
+            <div class="stat-card">
+                <h3><strong>Mensagens TCP</strong></h3>
+                <div class="count">0</div>
+            </div>
+            <div class="stat-card">
+                <h3><strong>Mensagens UDP</strong></h3>
+                <div class="count">0</div>
+            </div>
+            <div class="stat-card">
+                <h3><strong>Total de Mensagens</strong></h3>
+                <div class="count">0</div>
+            </div>
+        </div>
+
+        <!-- Mensagens -->
+        <div class="messages-container">
+            <div class="message-tabs">
+                <div class="tab active">Todas</div>
+                <div class="tab">TCP</div>
+                <div class="tab">UDP</div>
+            </div>
+
+            <div class="message-list">
+                <div class="no-messages">
+                    Nenhuma mensagem recebida ainda. Conecte clientes TCP/UDP para receber mensagens.
+                </div>
+            </div>
+        </div>
+
+        <!-- Depuração -->
+        <div class="debug-toggle">Ocultar Informações de Depuração</div>
+        <div class="debug-info">
+            <!-- espaço reservado para logs -->
+        </div>
+
+        <footer>
+            Servidor Combinado TCP/UDP com WebSocket – Prof. Wyllian – INE/UFSC
+        </footer>
+    </div>
+
+</body>
+</html>
