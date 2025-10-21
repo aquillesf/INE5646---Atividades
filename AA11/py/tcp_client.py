@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 '''
-UDP Socket: Cliente Modificado para conectar com o servidor web
+TCP Socket: Cliente Modificado para conectar com o servidor web
 '''
 
 import socket
@@ -13,8 +13,8 @@ import urllib.parse
 
 BUFFER_SIZE = 1024
 timeout = 2 * 60   # [segundos]
-url = 'name_server.idUFSC.vms.ufsc.br/...'
-p = 8081
+url = 'atividades.thiago.prado.vms.ufsc.br'
+p = 8080
 
 
 def TimeOut(signum, frame):
@@ -39,13 +39,13 @@ def extract_host_port(url):
         host, port_str = host.split(':')
         port = int(port_str)
     else:
-        port = 8081  # Porta padrão UDP
+        port = 8080  # Porta padrão TCP
 
     return host, port
 
 
 def main() -> None:
-    print("=== Cliente UDP para Servidor Web ===")
+    print("=== Cliente TCP para Servidor Web ===")
     string = input(f'URL do servidor [Padrão: {url}:{p}]: ')
 
     if not string:
@@ -54,46 +54,41 @@ def main() -> None:
     else:
         HOST, PORT = extract_host_port(string)
 
-    print(f"Conectando a {HOST} na porta {PORT} (UDP)")
-
-    # Criar socket UDP
-    try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # socket UDP
-        print(f"Socket UDP criado para enviar mensagens para {HOST}:{PORT}")
-    except socket.error:
-        print("Falha ao criar socket")
-        sys.exit()
+    print(f"Conectando a {HOST} na porta {PORT} (TCP)")
 
     try:
         signal.alarm(timeout)
         while True:
             try:
+                # Cria um novo socket para cada mensagem
+                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # socket TCP
+                s.connect((HOST, PORT))
+                print(f"Conectado ao servidor {HOST}:{PORT}")
+
                 msg = input('Mensagem para enviar (exit/quit para sair): ')
 
-                # Enviar mensagem
-                s.sendto(msg.encode('utf-8'), (HOST, PORT))
-
-                # Receber resposta
-                d = s.recvfrom(BUFFER_SIZE)
-                reply = d[0]
-                addr = d[1]
-                print("Resposta do servidor: {}".format(reply.decode('utf-8')))
-
-                # Verificar se é para sair
                 if msg.lower() in ['exit', 'quit']:
+                    print("Enviando comando para encerrar conexão...")
+                    s.sendall(msg.encode('utf-8'))
+                    data = s.recv(BUFFER_SIZE)
+                    print("Resposta do servidor: {}".format(data.decode('utf-8')))
                     print("Conexão encerrada.")
                     break
+
+                s.sendall(msg.encode('utf-8'))
+                data = s.recv(BUFFER_SIZE)
+                print("Resposta do servidor: {}".format(data.decode('utf-8')))
 
             except socket.error as e:
                 print(f"Erro de socket: {e}")
                 break
+            finally:
+                s.close()
 
         signal.alarm(0)
     except Exception as e:
         print(e)
         sys.exit()
-    finally:
-        s.close()
 
     sys.exit(0)
 

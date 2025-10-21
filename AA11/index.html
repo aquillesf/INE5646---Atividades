@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monitor de Mensagens TCP/UDP</title>
-    <link rel="stylesheet" href="ws.css">
-    <script href="ws_partial.js"></script>
+    <link rel="stylesheet" href="css/ws.css">
 </head>
 <body>
 
@@ -15,7 +14,6 @@
 
     <div class="container">
 
-        <!-- Status do servidor -->
         <div class="server-status">
             <div class="status-indicator">
                 <span class="status-dot status-offline"></span>
@@ -29,7 +27,6 @@
             </div>
         </div>
 
-        <!-- Estatísticas -->
         <div class="connection-stats">
             <div class="stat-card">
                 <h3><strong>Mensagens TCP</strong></h3>
@@ -45,7 +42,6 @@
             </div>
         </div>
 
-        <!-- Mensagens -->
         <div class="messages-container">
             <div class="message-tabs">
                 <div class="tab active">Todas</div>
@@ -60,16 +56,15 @@
             </div>
         </div>
 
-        <!-- Depuração -->
         <div class="debug-toggle">Ocultar Informações de Depuração</div>
         <div class="debug-info">
-            <!-- espaço reservado para logs -->
         </div>
 
         <footer>
-            Servidor Combinado TCP/UDP com WebSocket – Prof. Wyllian – INE/UFSC
+            Servidor Combinado TCP/UDP com WebSocket — [Nomes dos Autores] — INE/UFSC
         </footer>
     </div>
 
+    <script src="js/ws.js"></script>
 </body>
 </html>
